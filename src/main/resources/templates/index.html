@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание</title>
+    <style>
+        body {
+            background-color:beige;
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            width: 80%;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid black;
+        }
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+<h1>Список студентов</h1>
+<form action="/" method="get">
+    <select name="sort">
+        <option value="name">ФИО</option>
+        <option value="gender">Пол</option>
+        <option value="status">Статус</option>
+        <option value="fundingType">Тип финансирования</option>
+        <option value="groupStudent">Номер группы</option>
+    </select>
+    <button type="submit">Сортировать</button>
+</form>
+<table>
+    <tr>
+        <th>ФИО</th>
+        <th>Пол</th>
+        <th>Статус</th>
+        <th>Тип финансирования</th>
+        <th>Номер группы</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.fullName}"></td>
+        <td th:text="${student.gender}"></td>
+        <td th:text="${student.status}"></td>
+        <td th:text="${student.fundingType}"></td>
+        <td th:text="${student.groupStudent}"></td>
+    </tr>
+</table>
+</body>
+</html>
